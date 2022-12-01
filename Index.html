@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Prueba ITOS - Fernando Vargas G.</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script	src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+        <script src="funtions.js"></script>
+        <script src="ApiREST.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="ItosLogo.png" class="mx-auto d-block pt-5" style="width:50%">
+                    <h5 class="text-center">Prueba Técnica JS</h5>
+                    <h4 class="text-center">ITOS Cloud</h4>
+                </div>
+                <div class="col-sm-8 pt-5">
+                    <select id="SelectMenuId" onchange="SelectMenu()" class="custom-select my-1 mr-sm-2">
+                        <option value="0" selected>Escoge una opción</option>
+                        <option value="1">Saber Año Bisiesto</option>
+                        <option value="2">Crear una Tabla</option>
+                        <option value="3">Generar y Ordenar Números</option>
+                        <option value="4">Conjuntos de Arrays Letras</option>
+                        <option value="5">Consumo de API banco de México</option>
+                    </select>
+
+                    <div id="LeapYearDiv" style="display: none;">
+                        <p class="text-dark text-center mb-1">Escribe un año y descubre si es un año bisiesto</p>
+                        <div class="input-group mb-3">
+                            <input type="number" min="1800" max="2500" id="YearUser" class="form-control" placeholder="Digita un año válido">
+                            <button class="btn btn-outline-success" id="LeapYear" onclick="getLeapYear()">Calcular</button>
+                        </div>
+                    </div>
+                    <div id="CreateTableDiv" style="display: none;">
+                        <p class="text-dark text-center mb-1">Para crear una tabla, selecciona las filas y las columnas</p>
+                        <div class="input-group mb-2">
+                            <input type="number" id="NumberRows" min="1" max="100" class="form-control mr-2" placeholder="Filas">
+                            <input type="number" id="NumberColumns" min="1" max="30" class="form-control ml-2" placeholder="Columnas">
+                        </div>
+                        <button class="btn btn-outline-success btn-block" id="CreateTable" onclick="getTable()">Crear Tabla</button>
+                        
+                        <table class="table table-bordered table-striped mt-2" id="NewTable">
+                        </table>
+                    </div>
+                    <div id="ArrayNumDiv" style="display: none;">
+                        <p class="text-dark text-center mb-1">Selecciona la función deseada</p>
+                        <div class="input-group mb-2">
+                                <button class="btn btn-outline-success form-control mr-2" id="GNumber" onclick="ArrayNum()">Generar Números</button>
+                                <button class="btn btn-outline-success form-control ml-2" id="ONumber" onclick="OrdenarDesc()">Ordenar</button>
+                        </div>
+                        <table class="table text-center">
+                            <thead>
+                              <tr>
+                                <th>Números Generados</th>
+                                <th>Números Ordenados</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><p id="GenNumbers"></p></td>
+                                <td><p id="OrderNumbers"></p></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="SetLettersDiv" style="display: none;">
+                        <p class="text-dark text-center mb-1">Conjuntos de letras según el Array creado</p>
+                        <button class="btn btn-outline-success form-control ml-2" onclick="SetLetters()">Crear Conjuntos</button>
+                        <table class="table mt-2">
+                            <tbody>
+                              <tr>
+                                <th class="w-25">Conjunto A</th>
+                                <td id="SetA"></td>
+                              </tr>
+                              <tr>
+                                <th>Conjunto B</th>
+                                <td id="SetB"></td>
+                              </tr>
+                              <tr>
+                                <th>A ∪ B</th>
+                                <td id="SetAuB"></td>
+                              </tr>
+                              <tr>
+                                <th>A ∩ B</th>
+                                <td id="SetAnB"></td>
+                              </tr>
+                              <tr>
+                                <th>A ∆ B</th>
+                                <td id="SetA-B"></td>
+                              </tr>
+                              <tr>
+                                <th>A - B</th>
+                                <td id="SetAyB"></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="bankDataDiv" style="display: none;">
+                        <p class="text-dark text-center mb-1">Estos son los datos del tipo de cambio de los últimos 5 días</p>
+                        <table class="table table-bordered table-striped mt-2" id="ApiBank">
+                            <th>Fecha</th>
+                            <th>USD/MEX</th>
+                        </table>
+                    </div>
+                </div>        
+            </div>
+            <footer class="border-top text-muted position-absolute fixed-bottom">
+                <div class="text-center">
+                    &copy;<span>2022 - Prueba Técnica ITOS Cloud - Fernando Vargas Gaitán - 📱3017430953</span>
+                </div>
+            </footer>
+        </div>   
+    </body>
+</html>
